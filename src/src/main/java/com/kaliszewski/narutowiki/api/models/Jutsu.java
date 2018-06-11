@@ -1,11 +1,14 @@
 package com.kaliszewski.narutowiki.api.models;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "shinobi")
+@ToString(exclude = "shinobi")
+
 public class Jutsu {
 
     @Id
@@ -14,8 +17,8 @@ public class Jutsu {
 
     @ManyToOne
     @JoinColumn(name = "shinobi_id")
+    @Getter(AccessLevel.NONE)
     private Shinobi shinobi;
-
 
     private String name;
 
