@@ -1,16 +1,13 @@
 package com.kaliszewski.narutowiki.api.controllers;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.kaliszewski.narutowiki.api.models.Jutsu;
 import com.kaliszewski.narutowiki.api.models.Shinobi;
 import com.kaliszewski.narutowiki.api.repository.ShinobiRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RestController
@@ -24,7 +21,7 @@ public class ShinobiController {
 
 
     @GetMapping(path="/add",params={"name","surname","age","namejutsu"})
-    public @ResponseBody String addNewCharacter (@RequestParam String name,
+    public @ResponseBody String addNewShinobi (@RequestParam String name,
                                                  @RequestParam String surname,
                                                  @RequestParam int age,
                                                  @RequestParam String namejutsu
@@ -45,5 +42,18 @@ public class ShinobiController {
 
        
         return "Saved";
+    }
+
+
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Shinobi> getAllShinobis() {
+
+        return shinobiRepository.findAll();
+    }
+
+    @RequestMapping(value = "{shinobi_id}")
+    public @ResponseBody Optional<Shinobi> getShinobi(@PathVariable Long shinobi_id) {
+
+        return shinobiRepository.findById(shinobi_id);
     }
 }
