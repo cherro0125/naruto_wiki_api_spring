@@ -13,7 +13,7 @@ public class Jutsu {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "shinobi_id")
     private Shinobi shinobi;
 
 

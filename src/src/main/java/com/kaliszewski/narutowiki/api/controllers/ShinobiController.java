@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import com.kaliszewski.narutowiki.api.models.Jutsu;
 import com.kaliszewski.narutowiki.api.models.Shinobi;
-import com.kaliszewski.narutowiki.api.repository.CharacterRepository;
+import com.kaliszewski.narutowiki.api.repository.ShinobiRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RestController
-@RequestMapping(CharacterController.main_url)
+@RequestMapping(ShinobiController.main_url)
 @AllArgsConstructor
-public class CharacterController {
+public class ShinobiController {
 
 
-    private CharacterRepository characterRepository;
+    private ShinobiRepository shinobiRepository;
     public static final String main_url = "/api/characters";
 
 
@@ -41,7 +41,7 @@ public class CharacterController {
         ju.setName(namejutsu);
         j.add(ju);
         c.setJutsu(j);
-        characterRepository.save(c);
+        shinobiRepository.save(c);
 
        
         return "Saved";
