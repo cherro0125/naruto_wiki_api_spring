@@ -13,8 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="person")
-public class Person {
+@Table(name="shinobi")
+public class Shinobi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public class Person {
 
     private String surname;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "shinobi", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Jutsu> jutsu;
 
     private int age;
